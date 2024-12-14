@@ -1,36 +1,23 @@
 import {
-  Button,
+  Dimensions,
   Platform,
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  View,
 } from 'react-native';
 
 export default function App() {
+  console.log(Dimensions.get('screen'));
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Text>Hello React Native</Text>
-      <TouchableWithoutFeedback onPress={() => alert('Text pressed')}>
-        <Image
-          source={{
-            width: 200,
-            height: 300,
-            uri: 'https://picsum.photos/200/300',
-          }}
-        />
-      </TouchableWithoutFeedback> */}
-      <Button
-        title="Click me"
-        onPress={() =>
-          // Alert.alert('Button tapped', 'My Message', [
-          //   { text: 'Yes', onPress: () => console.log('YES') },
-          //   { text: 'No', onPress: () => console.log('NO') },
-          // ])
-          Alert.prompt('Enter new value', 'Please enter your name', (text) =>
-            console.log(text)
-          )
-        }
-      />
+      <View
+        style={{
+          backgroundColor: 'red',
+          width: '50%',
+          height: 70,
+        }}
+      ></View>
     </SafeAreaView>
   );
 }
