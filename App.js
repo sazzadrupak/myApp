@@ -1,12 +1,13 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, View } from 'react-native';
-import AppText from './app/components/AppText/AppText';
+import AppButton from './app/components/AppButton';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AppText>Open up App.js to start working on your app!</AppText>
-      <MaterialCommunityIcons name="email" size={60} color="dodgerblue" />
+      <AppButton
+        title="Login"
+        onPress={() => console.log('Tapped')}
+      ></AppButton>
     </View>
   );
 }
