@@ -1,10 +1,10 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet, View } from 'react-native';
-import AppText from './app/components/AppText';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AppText>I love React Native</AppText>
+      <MaterialCommunityIcons name="email" size={60} color="dodgerblue" />
     </View>
   );
 }
