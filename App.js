@@ -1,5 +1,5 @@
+import { useDeviceOrientation } from '@react-native-community/hooks';
 import {
-  Dimensions,
   Platform,
   SafeAreaView,
   StatusBar,
@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 export default function App() {
-  console.log(Dimensions.get('screen'));
+  console.log(useDeviceOrientation());
   return (
     <SafeAreaView style={styles.container}>
       <View
