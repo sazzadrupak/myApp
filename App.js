@@ -15,25 +15,39 @@ export default function App() {
         style={{
           backgroundColor: '#fff',
           flex: 1,
+          flexDirection: 'row',
+          // justifyContent: 'center',
+          justifyContent: 'space-evenly',
+          // alignItems: 'center',
+          alignItems: 'center',
         }}
       >
         <View
           style={{
             backgroundColor: 'dodgerblue',
             // flex: 1,
-            flex: 2,
+            // flex: 2,
+            width: 100,
+            // height: 100,
+            height: 300, // for baseline align items
+            // alignSelf: 'flex-start',
           }}
         />
         <View
           style={{
             backgroundColor: 'gold',
-            flex: 1,
+            // flex: 1,
+            width: 100,
+            // height: 100,
+            height: 200, // for baseline align items
           }}
         />
         <View
           style={{
             backgroundColor: 'tomato',
-            flex: 1,
+            // flex: 1,
+            width: 100,
+            height: 100,
           }}
         />
       </View>
