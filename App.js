@@ -1,18 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import AppText from './app/components/AppText';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          fontSize: 30,
-          fontFamily: 'Roboto',
-          textDecorationLine: 'line-through',
-          lineHeight: 30,
-        }}
-      >
-        I love React Native
-      </Text>
+      <AppText>I love React Native</AppText>
     </View>
   );
 }
