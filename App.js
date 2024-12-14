@@ -20,8 +20,8 @@ export default function App() {
           // justifyContent: 'space-evenly',
           // alignItems: 'center',
           alignItems: 'center',
-          flexWrap: 'wrap',
-          alignContent: 'center', // only works if style has flexWrap to wrap value
+          // flexWrap: 'wrap',
+          // alignContent: 'center', // only works if style has flexWrap to wrap value
         }}
       >
         <View
@@ -29,7 +29,11 @@ export default function App() {
             backgroundColor: 'dodgerblue',
             // flex: 1,
             // flex: 2,
-            width: 100,
+            // width: 100,
+            // flexBasis: 100,
+            // flexGrow: 1, // same as flex: 1
+            width: 300,
+            flexShrink: 1,
             height: 100,
             // height: 300, // for baseline align items
             // alignSelf: 'flex-start',
@@ -38,7 +42,7 @@ export default function App() {
         <View
           style={{
             backgroundColor: 'gold',
-            // flex: 1,
+            flex: 1,
             width: 100,
             height: 100,
             // height: 200, // for baseline align items
@@ -47,13 +51,7 @@ export default function App() {
         <View
           style={{
             backgroundColor: 'tomato',
-            width: 100,
-            height: 100,
-          }}
-        />
-        <View
-          style={{
-            backgroundColor: 'grey',
+            flex: 1,
             width: 100,
             height: 100,
           }}
