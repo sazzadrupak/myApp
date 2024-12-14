@@ -1,16 +1,23 @@
-import { Platform, StatusBar, StyleSheet } from 'react-native';
-import WelcomeScreen from './app/screens/WelcomeScreen';
+import { StyleSheet, View } from 'react-native';
 
 export default function App() {
-  return <WelcomeScreen />;
+  return (
+    <View style={styles.container}>
+      <View
+        style={[
+          styles.box,
+          { backgroundColor: 'dodgerblue', borderColor: 'royalblue' },
+        ]}
+      ></View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  box: { width: 100, height: 100, borderWidth: 10, borderRadius: 10 },
 });
