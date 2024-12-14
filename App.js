@@ -6,9 +6,22 @@ export default function App() {
       <View
         style={[
           styles.box,
-          { backgroundColor: 'dodgerblue', borderColor: 'royalblue' },
+          {
+            backgroundColor: 'dodgerblue',
+            borderColor: 'royalblue',
+            padding: 20,
+            paddingHorizontal: 10,
+          },
         ]}
-      ></View>
+      >
+        <View
+          style={{
+            backgroundColor: 'gold',
+            width: 50,
+            height: 50,
+          }}
+        ></View>
+      </View>
     </View>
   );
 }
