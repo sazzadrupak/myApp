@@ -1,27 +1,18 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <View
-        style={[
-          styles.box,
-          {
-            backgroundColor: 'dodgerblue',
-            borderColor: 'royalblue',
-            padding: 20,
-            paddingHorizontal: 10,
-          },
-        ]}
+      <Text
+        style={{
+          fontSize: 30,
+          fontFamily: 'Roboto',
+          textDecorationLine: 'line-through',
+          lineHeight: 30,
+        }}
       >
-        <View
-          style={{
-            backgroundColor: 'gold',
-            width: 50,
-            height: 50,
-          }}
-        ></View>
-      </View>
+        I love React Native
+      </Text>
     </View>
   );
 }
