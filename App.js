@@ -16,10 +16,12 @@ export default function App() {
           backgroundColor: '#fff',
           flex: 1,
           flexDirection: 'row',
-          // justifyContent: 'center',
-          justifyContent: 'space-evenly',
+          justifyContent: 'center',
+          // justifyContent: 'space-evenly',
           // alignItems: 'center',
           alignItems: 'center',
+          flexWrap: 'wrap',
+          alignContent: 'center', // only works if style has flexWrap to wrap value
         }}
       >
         <View
@@ -28,8 +30,8 @@ export default function App() {
             // flex: 1,
             // flex: 2,
             width: 100,
-            // height: 100,
-            height: 300, // for baseline align items
+            height: 100,
+            // height: 300, // for baseline align items
             // alignSelf: 'flex-start',
           }}
         />
@@ -38,14 +40,20 @@ export default function App() {
             backgroundColor: 'gold',
             // flex: 1,
             width: 100,
-            // height: 100,
-            height: 200, // for baseline align items
+            height: 100,
+            // height: 200, // for baseline align items
           }}
         />
         <View
           style={{
             backgroundColor: 'tomato',
-            // flex: 1,
+            width: 100,
+            height: 100,
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: 'grey',
             width: 100,
             height: 100,
           }}
