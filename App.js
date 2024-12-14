@@ -13,11 +13,30 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <View
         style={{
-          backgroundColor: 'red',
-          width: '50%',
-          height: 70,
+          backgroundColor: '#fff',
+          flex: 1,
         }}
-      ></View>
+      >
+        <View
+          style={{
+            backgroundColor: 'dodgerblue',
+            // flex: 1,
+            flex: 2,
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: 'gold',
+            flex: 1,
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: 'tomato',
+            flex: 1,
+          }}
+        />
+      </View>
     </SafeAreaView>
   );
 }
