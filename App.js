@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { Button, Text } from 'react-native';
 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Screen from './app/components/Screen';
 
 const TweetsScreen = () => {
@@ -58,8 +59,21 @@ const RootStack = createNativeStackNavigator({
 });
 
 const MyTabs = createBottomTabNavigator({
+  screenOptions: {
+    tabBarActiveBackgroundColor: 'tomato',
+    tabBarActiveTintColor: 'white',
+    tabBarInactiveBackgroundColor: '#eee',
+    tabBarInactiveTintColor: 'black',
+  },
   screens: {
-    Feed: TweetsScreen,
+    Feed: {
+      screen: TweetsScreen,
+      options: {
+        tabBarIcon: ({ size, color }) => (
+          <MaterialCommunityIcons name="home" size={size} color={color} />
+        ),
+      },
+    },
     Account: AccountScreen,
   },
 });
