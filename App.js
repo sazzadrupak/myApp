@@ -1,3 +1,4 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   createStaticNavigation,
   useNavigation,
@@ -27,6 +28,12 @@ const TweetDetailsScreen = ({ route }) => (
   </Screen>
 );
 
+const AccountScreen = () => (
+  <Screen>
+    <Text>ACCOUNT</Text>
+  </Screen>
+);
+
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'Tweets',
   screenOptions: {
@@ -50,7 +57,13 @@ const RootStack = createNativeStackNavigator({
   },
 });
 
-const Navigation = createStaticNavigation(RootStack);
+const MyTabs = createBottomTabNavigator({
+  screens: {
+    Feed: TweetsScreen,
+    Account: AccountScreen,
+  },
+});
+const Navigation = createStaticNavigation(MyTabs);
 
 export default function App() {
   return <Navigation />;
