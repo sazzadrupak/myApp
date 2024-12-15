@@ -5,6 +5,9 @@ import RegisterScreen from '../screens/RegisterScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 
 const AuthNavigator = createNativeStackNavigator({
+  screenOptions: {
+    headerTitleAlign: 'center',
+  },
   screens: {
     Welcome: {
       screen: WelcomeScreen,
