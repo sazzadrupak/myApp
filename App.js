@@ -39,7 +39,12 @@ const RootStack = createNativeStackNavigator({
         title: 'Overview',
       },
     },
-    TweetDetails: TweetDetailsScreen,
+    TweetDetails: {
+      screen: TweetDetailsScreen,
+      options: ({ route }) => ({
+        title: `Tweet ${route.params.id}`,
+      }),
+    },
   },
 });
 
