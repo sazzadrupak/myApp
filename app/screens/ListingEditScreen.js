@@ -1,4 +1,5 @@
-import React from 'react';
+import * as Location from 'expo-location';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
@@ -26,6 +27,23 @@ const categories = [
 ];
 
 const ListingEditScreen = () => {
+  const [location, setLocation] = useState();
+  const getLocation = async () => {
+    try {
+      const { granted } = await Location.requestForegroundPermissionsAsync();
+      if (!granted) return;
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getLastKnownPositionAsync();
+      console.log({ latitude, longitude });
+      setLocation({ latitude, longitude });
+    } catch (error) {
+      console.log('Error getting location', error);
+    }
+  };
+  useEffect(() => {
+    getLocation();
+  }, []);
   return (
     <Screen style={styles.container}>
       <AppForm
