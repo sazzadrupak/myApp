@@ -15,7 +15,7 @@ const AppTextInput = ({ icon, ...otherProps }) => {
           style={styles.icon}
         />
       )}
-      <TextInput style={defaultStyles.text} {...otherProps} />
+      <TextInput style={[defaultStyles.text, styles.text]} {...otherProps} />
     </View>
   );
 };
@@ -26,12 +26,15 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flexDirection: 'row',
     width: '100%',
-    padding: 15,
+    padding: 8,
     marginVertical: 10,
     alignItems: 'center',
   },
   icon: {
     marginRight: 10,
+  },
+  text: {
+    flex: 1,
   },
 });
 
