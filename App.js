@@ -15,15 +15,15 @@ const TweetsScreen = () => {
       <Text>TWEET</Text>
       <Button
         title="View tweet"
-        onPress={() => navigation.navigate('TweetDetails')}
+        onPress={() => navigation.navigate('TweetDetails', { id: 1 })}
       />
     </Screen>
   );
 };
 
-const TweetDetailsScreen = () => (
+const TweetDetailsScreen = ({ route }) => (
   <Screen>
-    <Text>TWEET DETAILS</Text>
+    <Text>TWEET DETAILS {route.params.id}</Text>
   </Screen>
 );
 
