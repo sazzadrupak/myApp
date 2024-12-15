@@ -9,14 +9,15 @@ import Screen from '../components/Screen';
 const initialMessages = [
   {
     id: 1,
-    title: 'T1',
-    description: 'D1',
+    title: 'Sazzad rupak',
+    description: 'Hey! Is this item still available?',
     image: require('../assets/rupak.jpg'),
   },
   {
     id: 2,
-    title: 'T2',
-    description: 'D2',
+    title: 'Sazzad rupak',
+    description:
+      "I'm interested in this item. When will you be able to post it?",
     image: require('../assets/rupak.jpg'),
   },
 ];
@@ -28,7 +29,6 @@ const MessagesScreen = () => {
   const handleDelete = (message) => {
     // Delete the message from an array
     // Call the server to delete the message
-    console.log('Delete', message);
     setMessages(messages.filter((m) => m.id !== message.id));
   };
 
@@ -40,7 +40,7 @@ const MessagesScreen = () => {
         renderItem={({ item }) => (
           <ListItem
             title={item.title}
-            subtitle={item.description}
+            subTitle={item.description}
             image={item.image}
             onPress={() => console.log('Message selected', item)}
             renderRightActions={() => (
