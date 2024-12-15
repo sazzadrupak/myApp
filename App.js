@@ -30,13 +30,15 @@ const TweetDetailsScreen = ({ route }) => (
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'Tweets',
   screenOptions: {
-    headerStyle: { backgroundColor: 'tomato' },
+    headerStyle: { backgroundColor: 'dodgerblue' },
   },
   screens: {
     Tweets: {
       screen: TweetsScreen,
       options: {
         title: 'Overview',
+        headerStyle: { backgroundColor: 'tomato' },
+        headerTintColor: 'white',
       },
     },
     TweetDetails: {
