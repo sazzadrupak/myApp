@@ -1,8 +1,8 @@
 import React from 'react';
 import { Platform, StyleSheet, Text } from 'react-native';
 
-const AppText = ({ children }) => {
-  return <Text style={styles.text}>{children}</Text>;
+const AppText = ({ children, style }) => {
+  return <Text style={[styles.text, style]}>{children}</Text>;
 };
 
 const styles = StyleSheet.create({
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
       },
       android: {
         fontFamily: 'Roboto',
-        fontSize: 28,
+        fontSize: 18,
       },
     }),
   },
