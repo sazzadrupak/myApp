@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import AppButton from '../components/AppButton';
 
 function WelcomeScreen(props) {
+  const navigation = useNavigation();
   return (
     <ImageBackground
       blurRadius={8}
@@ -15,8 +17,12 @@ function WelcomeScreen(props) {
         <Text style={styles.tagline}>I love this</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <AppButton title="Login" />
-        <AppButton title="Register" color="secondary" />
+        <AppButton title="Login" onPress={() => navigation.navigate('Login')} />
+        <AppButton
+          title="Register"
+          color="secondary"
+          onPress={() => navigation.navigate('Register')}
+        />
       </View>
     </ImageBackground>
   );
