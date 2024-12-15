@@ -15,13 +15,20 @@ const TweetsScreen = () => {
   return (
     <Screen>
       <Text>TWEET</Text>
-      <Button
+      {/* <Button
         title="View tweet"
         onPress={() => navigation.navigate('TweetDetails', { id: 1 })}
-      />
+      /> */}
+      <Button title="Contact" onPress={() => navigation.navigate('Contacts')} />
     </Screen>
   );
 };
+
+const ContactsScreen = () => (
+  <Screen>
+    <Text>CONTACTS</Text>
+  </Screen>
+);
 
 const TweetDetailsScreen = ({ route }) => (
   <Screen>
@@ -34,29 +41,6 @@ const AccountScreen = () => (
     <Text>ACCOUNT</Text>
   </Screen>
 );
-
-const RootStack = createNativeStackNavigator({
-  initialRouteName: 'Tweets',
-  screenOptions: {
-    headerStyle: { backgroundColor: 'dodgerblue' },
-  },
-  screens: {
-    Tweets: {
-      screen: TweetsScreen,
-      options: {
-        title: 'Overview',
-        headerStyle: { backgroundColor: 'tomato' },
-        headerTintColor: 'white',
-      },
-    },
-    TweetDetails: {
-      screen: TweetDetailsScreen,
-      options: ({ route }) => ({
-        title: `Tweet ${route.params.id}`,
-      }),
-    },
-  },
-});
 
 const MyTabs = createBottomTabNavigator({
   screenOptions: {
@@ -77,7 +61,40 @@ const MyTabs = createBottomTabNavigator({
     Account: AccountScreen,
   },
 });
-const Navigation = createStaticNavigation(MyTabs);
+
+const RootStack = createNativeStackNavigator({
+  initialRouteName: 'Tweets',
+  screenOptions: {
+    headerStyle: { backgroundColor: 'dodgerblue' },
+  },
+  screens: {
+    Tweets: {
+      screen: MyTabs,
+      options: {
+        headerShown: false,
+        title: 'Overview',
+        headerStyle: { backgroundColor: 'tomato' },
+        headerTintColor: 'white',
+      },
+    },
+    TweetDetails: {
+      screen: TweetDetailsScreen,
+      options: ({ route }) => ({
+        title: `Tweet ${route.params.id}`,
+      }),
+    },
+    Contacts: {
+      screen: ContactsScreen,
+      options: {
+        title: 'Contacts',
+        headerStyle: { backgroundColor: 'tomato' },
+        headerTintColor: 'white',
+      },
+    },
+  },
+});
+
+const Navigation = createStaticNavigation(RootStack);
 
 export default function App() {
   return <Navigation />;
