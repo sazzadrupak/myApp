@@ -1,10 +1,10 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 
-const AuthNavigator = createNativeStackNavigator({
+const AuthNavigator = createStackNavigator({
   screenOptions: {
     headerTitleAlign: 'center',
   },
