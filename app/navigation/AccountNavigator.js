@@ -6,9 +6,7 @@ import MessagesScreen from '../screens/MessagesScreen';
 const AccountNavigator = createStackNavigator({
   screenOptions: {
     headerTitleAlign: 'center',
-    gestureEnabled: true,
   },
-  mode: 'modal',
   screens: {
     Account: {
       screen: AccountScreen,

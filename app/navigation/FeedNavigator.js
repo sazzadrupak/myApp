@@ -7,6 +7,7 @@ const FeedNavigator = createStackNavigator({
   screenOptions: {
     headerTitleAlign: 'center',
     gestureEnabled: true,
+    headerShown: false,
   },
   mode: 'modal',
   screens: {
