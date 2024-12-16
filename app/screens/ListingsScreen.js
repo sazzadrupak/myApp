@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
 import Card from '../components/Card';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
@@ -20,6 +21,7 @@ const listings = [
   },
 ];
 const ListingsScreen = () => {
+  const navigation = useNavigation();
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -30,6 +32,7 @@ const ListingsScreen = () => {
             title={item.title}
             subTitle={'$' + item.price}
             image={item.image}
+            onPress={() => navigation.navigate('ListingDetails', item)}
           />
         )}
       />
