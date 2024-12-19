@@ -6,7 +6,7 @@ const ActivityIndicator = ({ visible = false }) => {
   const animation = useRef(null);
 
   if (!visible) return null;
-  console.log('VISIBLE', visible);
+
   return (
     <LottieView
       style={styles.loader}
