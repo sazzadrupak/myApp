@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
+import listingApi from '../api/listings';
 import {
   AppForm,
   AppFormField,
@@ -9,7 +9,7 @@ import {
   SubmitButton,
 } from '../components/forms';
 import FormImagePicker from '../components/forms/FormImagePicker';
-import Screen from '../components/Screen';
+import KeyboardAvoidingContainer from '../components/KeyboardAvoidingContainer';
 import useLocation from '../hooks/useLocation';
 
 const validationSchema = Yup.object().shape({
@@ -29,8 +29,14 @@ const categories = [
 const ListingEditScreen = () => {
   const location = useLocation();
 
+  const handleSubmit = async (listing) => {
+    const result = await listingApi.addListing({ ...listing, location });
+    if (!result.ok) return alert('Could not save the listing');
+    alert('Success!');
+  };
+
   return (
-    <Screen style={styles.container}>
+    <KeyboardAvoidingContainer>
       <AppForm
         initialValues={{
           title: '',
@@ -39,7 +45,7 @@ const ListingEditScreen = () => {
           category: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />
@@ -68,12 +74,8 @@ const ListingEditScreen = () => {
         />
         <SubmitButton title="Post" />
       </AppForm>
-    </Screen>
+    </KeyboardAvoidingContainer>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
-});
+
 export default ListingEditScreen;

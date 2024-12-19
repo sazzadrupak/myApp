@@ -10,6 +10,7 @@ import routes from './routes';
 const AppNavigator = createBottomTabNavigator({
   screenOptions: {
     headerTitleAlign: 'center',
+    tabBarHideOnKeyboard: true,
   },
   screens: {
     Feed: {
