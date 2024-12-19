@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 
 import listingApi from '../api/listings';
@@ -11,6 +11,7 @@ import {
 import FormImagePicker from '../components/forms/FormImagePicker';
 import KeyboardAvoidingContainer from '../components/KeyboardAvoidingContainer';
 import useLocation from '../hooks/useLocation';
+import UploadScreen from './UploadScreen';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label('Title'),
@@ -28,15 +29,25 @@ const categories = [
 
 const ListingEditScreen = () => {
   const location = useLocation();
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const handleSubmit = async (listing) => {
-    const result = await listingApi.addListing({ ...listing, location });
+    setProgress(0);
+    setUploadVisible(true);
+    const result = await listingApi.addListing(
+      { ...listing, location },
+      (progresss) => setProgress(progresss)
+    );
+    setUploadVisible(false);
+
     if (!result.ok) return alert('Could not save the listing');
     alert('Success!');
   };
 
   return (
     <KeyboardAvoidingContainer>
+      <UploadScreen progress={progress} visible={uploadVisible} />
       <AppForm
         initialValues={{
           title: '',
