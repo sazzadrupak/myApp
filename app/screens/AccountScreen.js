@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+
+import AuthContext from '../auth/context';
 
 import Icon from '../components/Icon';
 import ListItem from '../components/ListItem';
@@ -30,12 +32,13 @@ const menuItems = [
 ];
 
 const AccountScreen = () => {
+  const { user } = useContext(AuthContext);
   const navigation = useNavigation();
   return (
     <Screen style={styles.screen}>
       <ListItem
-        title="Sazzad Rupak"
-        subTitle="sazzad.rupak.dev@gmail.com"
+        title={user.name}
+        subTitle={user.email}
         image={require('../assets/rupak.jpg')}
       />
       <View style={styles.container}>
