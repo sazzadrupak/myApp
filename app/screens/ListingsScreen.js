@@ -10,6 +10,7 @@ import Card from '../components/Card';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
 import useApi from '../hooks/useApi';
+import routes from '../navigation/routes';
 
 const ListingsScreen = () => {
   const navigation = useNavigation();
@@ -42,6 +43,7 @@ const ListingsScreen = () => {
             title={item.title}
             subTitle={'$' + item.price}
             imageUrl={item.images[0].url}
+            thumbnailUrl={item.images[0].thumbnailUrl}
             onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
           />
         )}
