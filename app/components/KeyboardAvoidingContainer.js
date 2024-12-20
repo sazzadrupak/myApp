@@ -1,43 +1,23 @@
 import React from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
-
-import Screen from '../components/Screen';
+import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 
 const KeyboardAvoidingContainer = ({ children }) => {
   return (
-    <Screen style={styles.container}>
-      <KeyboardAvoidingView
-        style={styles.keyboardAvoidingView}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    <KeyboardAvoidingView style={styles.keyboardAvoidingView}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.childrenContainer}
       >
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={styles.childrenContainer}
-        >
-          {children}
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </Screen>
+        {children}
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 10,
-    paddingTop: 0,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 0,
-  },
   keyboardAvoidingView: {
     flex: 1,
   },
-  childrenContainer: {},
 });
 
 export default KeyboardAvoidingContainer;

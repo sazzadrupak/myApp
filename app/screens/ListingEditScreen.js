@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 
+import { StyleSheet } from 'react-native';
 import listingApi from '../api/listings';
 import {
   AppForm,
@@ -10,6 +11,7 @@ import {
 } from '../components/forms';
 import FormImagePicker from '../components/forms/FormImagePicker';
 import KeyboardAvoidingContainer from '../components/KeyboardAvoidingContainer';
+import Screen from '../components/Screen';
 import useLocation from '../hooks/useLocation';
 import UploadScreen from './UploadScreen';
 
@@ -48,51 +50,63 @@ const ListingEditScreen = () => {
   };
 
   return (
-    <KeyboardAvoidingContainer>
-      <UploadScreen
-        progress={progress}
-        visible={uploadVisible}
-        onDone={() => setUploadVisible(false)}
-      />
-      <AppForm
-        initialValues={{
-          title: '',
-          price: '',
-          description: '',
-          category: null,
-          images: [],
-        }}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        <FormImagePicker name="images" />
-        <AppFormField maxLength={255} name="title" placeholder="Title" />
-        <AppFormField
-          keyboardType="numeric"
-          maxLength={8}
-          name="price"
-          placeholder="Price"
-          width={120}
+    <Screen style={styles.container}>
+      <KeyboardAvoidingContainer>
+        <UploadScreen
+          progress={progress}
+          visible={uploadVisible}
+          onDone={() => setUploadVisible(false)}
         />
-        <AppFormPicker
-          items={categories}
-          name="category"
-          // numberOfColumns={3}
-          // PickerItemComponent={CategoryPickerItem}
-          placeholder="Category"
-          width="50%"
-        />
-        <AppFormField
-          maxLength={255}
-          multiline
-          name="description"
-          numberOfLines={3}
-          placeholder="Description"
-        />
-        <SubmitButton title="Post" />
-      </AppForm>
-    </KeyboardAvoidingContainer>
+        <AppForm
+          initialValues={{
+            title: '',
+            price: '',
+            description: '',
+            category: null,
+            images: [],
+          }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <FormImagePicker name="images" />
+          <AppFormField maxLength={255} name="title" placeholder="Title" />
+          <AppFormField
+            keyboardType="numeric"
+            maxLength={8}
+            name="price"
+            placeholder="Price"
+            width={120}
+          />
+          <AppFormPicker
+            items={categories}
+            name="category"
+            // numberOfColumns={3}
+            // PickerItemComponent={CategoryPickerItem}
+            placeholder="Category"
+            width="50%"
+          />
+          <AppFormField
+            maxLength={255}
+            multiline
+            name="description"
+            numberOfLines={3}
+            placeholder="Description"
+          />
+          <SubmitButton title="Post" />
+        </AppForm>
+      </KeyboardAvoidingContainer>
+    </Screen>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 10,
+    paddingTop: 0,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 0,
+  },
+});
 
 export default ListingEditScreen;
