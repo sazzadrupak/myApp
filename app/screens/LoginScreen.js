@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 
 import authApi from '../api/auth';
 import AuthContext from '../auth/context';
+import authStorage from '../auth/storage';
 import Screen from '../components/Screen';
 import {
   AppForm,
@@ -28,6 +29,7 @@ const LoginScreen = () => {
     setLoginFailed(false);
     const user = jwtDecode(result.data);
     authContext.setUser(user);
+    authStorage.storeToken(result.data);
   };
 
   return (
