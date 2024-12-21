@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
 import authApi from '../api/auth';
 import usersApi from '../api/users';
+import ActivityIndicator from '../components/ActivityIndicator';
 import Screen from '../components/Screen';
 import {
   AppForm,
@@ -11,6 +12,7 @@ import {
   ErrorMessage,
   SubmitButton,
 } from '../components/forms';
+import useApi from '../hooks/useApi';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label('Name'),
@@ -19,11 +21,14 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterScreen = () => {
+  const registerApi = useApi(usersApi.register);
+  const loginApi = useApi(authApi.login);
+
   const auth = useAuth();
   const [error, setError] = useState();
 
   const handleSubmit = async (userInfo) => {
-    const result = await usersApi.register(userInfo);
+    const result = await registerApi.request(userInfo);
 
     if (!result.ok) {
       if (result.data) setError(result.data.error);
@@ -34,7 +39,7 @@ const RegisterScreen = () => {
       return;
     }
 
-    const { data: authToken } = await authApi.login(
+    const { data: authToken } = await loginApi.request(
       userInfo.email,
       userInfo.password
     );
@@ -43,7 +48,7 @@ const RegisterScreen = () => {
 
   return (
     <Screen style={styles.container}>
-      <Image source={require('../assets/logo-red.png')} style={styles.logo} />
+      <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
       <AppForm
         initialValues={{ name: '', email: '', password: '' }}
         onSubmit={handleSubmit}
