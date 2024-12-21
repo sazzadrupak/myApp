@@ -37,4 +37,5 @@ export default {
   getUser,
   storeToken,
   removeToken,
+  getToken,
 };
